@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
-//const joi = require('joi');
 
+
+//middleware
 app.use(bodyparser.json());
+
 //const path = require('path');
 const db = require('./db');
 const collection = "todo";
@@ -21,6 +23,7 @@ app.put('/:id',(req,res)=>{
     });
 });
 
+// adding data to databse
 app.post('/',(req,res)=>{
     const userInput = req.body;
     db.getDB().collection(collection).insertOne(userInput,(err,result)=>{
@@ -58,10 +61,14 @@ db.connect((err)=>{
         
     }
 })
+
+
+// rendering HTML file 
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html');
 })
 
+// displaying data on the browser
 app.get('/getTodos',(req,res)=>{
     db.getDB().collection(collection).find({}).toArray((err,documents)=>{
         if(err)
