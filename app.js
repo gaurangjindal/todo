@@ -55,7 +55,7 @@ db.connect((err)=>{
         process.exit(1);
     }
     else{
-        app.listen(5050,(req,res)=>{
+        app.listen(process.env.port || 5000,(req,res)=>{
             console.log('connected to database, app listening to port 5050');
         });
         
