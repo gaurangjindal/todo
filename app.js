@@ -6,10 +6,10 @@ const app = express();
 //middleware
 app.use(bodyparser.json());
 
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
 //const path = require('path');
-const db = require('./db.js');
+const db = require('./public/db.js');
 const collection = "todo";
 
 
