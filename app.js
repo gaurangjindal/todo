@@ -9,7 +9,7 @@ app.use(bodyparser.json());
 app.use(express.static("public"));
 
 //const path = require('path');
-const db = require('./public/db');
+const db = require('db.js');
 const collection = "todo";
 
 
